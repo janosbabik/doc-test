@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'documentation/**'
 permissions:
   contents: write
 jobs:
@@ -25,5 +27,6 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material 
+      - run: cd documentation
       - run: mkdocs gh-deploy --force
 
