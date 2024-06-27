@@ -1,1 +1,8 @@
 site_name: Test Docs
+theme:
+  name: material
+  features:
+    - navigation.top
+  palette:
+    primary: deep orange
+    accent: amber
