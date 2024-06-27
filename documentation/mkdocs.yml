@@ -1,4 +1,5 @@
 site_name: Test Docs2
+site_url: https://janosbabik.github.io/doc-test/
 theme:
   name: material
   features:
@@ -6,3 +7,8 @@ theme:
   palette:
     primary: deep orange
     accent: amber
+extra:
+  version:
+    provider: mike
+    alias: true
+    default: stable
