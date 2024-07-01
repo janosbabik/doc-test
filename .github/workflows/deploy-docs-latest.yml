@@ -34,7 +34,7 @@ jobs:
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
-          VERSION=$(git git describe --tags)
+          VERSION=$(git describe --tags --abbrev=0)
           echo "Deploying $VERSION"
           git fetch origin
           mike deploy --update-alias --push $VERSION latest
