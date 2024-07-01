@@ -1,7 +1,7 @@
 name: Deploy LATEST DOCS
 on:
   workflow_run:
-    workflows: ["github-tag-and-release.yml"]
+    workflows: ["Bump version"]
     types:
       - completed
 permissions:
