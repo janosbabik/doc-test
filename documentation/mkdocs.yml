@@ -5,10 +5,9 @@ theme:
   features:
     - navigation.top
   palette:
-    primary: deep orange
-    accent: amber
+    primary: green
+    accent: green
 extra:
   version:
     provider: mike
-    alias: true
-    default: stable
+    default: latest

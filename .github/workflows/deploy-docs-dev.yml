@@ -1,8 +1,8 @@
-name: Deploy Docs
+name: Deploy DEV DOCS
 on:
   push:
     branches:
-      - main
+      - develop
     paths:
       - 'documentation/**'
 permissions:
@@ -27,8 +27,9 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material 
+      - run: pip install mike
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
-          mkdocs gh-deploy --force
+          mike deploy --update-alias develop
 
