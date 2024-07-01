@@ -30,6 +30,7 @@ jobs:
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
+          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
           git fetch origin
           mike deploy --update-alias --push $GITHUB_REF_NAME latest
           mike set-default latest --push
