@@ -1,5 +1,9 @@
 name: Deploy LATEST DOCS
 on:
+  workflow_run:
+    workflows: ["Bump version"]
+    types:
+      - completed
   push:
     branches:
       - main
