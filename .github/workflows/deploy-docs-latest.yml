@@ -31,6 +31,6 @@ jobs:
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
-          git pull
-          mike deploy 1.0 latest --update-alias --push
+          git fetch origin
+          mike deploy --update-alias --push 1.0 latest
           mike set-default latest

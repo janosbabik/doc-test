@@ -31,6 +31,6 @@ jobs:
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
-          git pull
-          mike deploy develop --update-alias --push
+          get fetch origin
+          mike deploy --update-alias --push develop
 
