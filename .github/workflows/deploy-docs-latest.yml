@@ -1,10 +1,11 @@
 name: Deploy LATEST DOCS
 on:
-  push:
+  workflow_run:    
+    workflows: ["Bump version"]
+    types:
+      - completed
     branches:
       - main
-    tags:
-      - '*'
 permissions:
   contents: write
 jobs:
@@ -13,19 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      
-      - name: Get Tag Name
-        id: get_tag_name
-        run: |
-          echo "Full ref: $GITHUB_REF"
-          TAG_NAME=${GITHUB_REF#refs/tags/}
-          echo "Tag name: $TAG_NAME"
-          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
-
-      - name: Display Tag Name
-        run: echo "The tag name is ${{ env.TAG_NAME }}"
-        
+          fetch-depth: 0      
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
@@ -45,7 +34,8 @@ jobs:
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
-          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
+          VERSION=$(git git describe --tags)
+          echo "Deploying $VERSION"
           git fetch origin
-          mike deploy --update-alias --push $GITHUB_REF_NAME latest
+          mike deploy --update-alias --push $VERSION latest
           mike set-default latest --push
