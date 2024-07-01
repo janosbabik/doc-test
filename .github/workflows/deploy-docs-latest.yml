@@ -1,14 +1,21 @@
 name: Deploy LATEST DOCS
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  workflow_run:
+    workflows: ["Bump version"]
+    types:
+      - completed
 permissions:
   contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Tag Name
+        id: get_tag_name
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      - name: Display Tag Name
+        run: echo "The tag name is $TAG_NAME"
+        
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
