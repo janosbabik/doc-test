@@ -32,5 +32,5 @@ jobs:
         working-directory: ./documentation
         run: |
           git fetch origin
-          mike deploy --update-alias --push 1.0 latest --alias-type=redirect
-          mike set-default latest
+          mike deploy --update-alias --push 1.0 latest
+          mike set-default latest --push
