@@ -1,3 +1,3 @@
 # Welcome to MkDocs.
 
-. main
+. dev
