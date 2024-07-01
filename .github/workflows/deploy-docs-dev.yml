@@ -31,5 +31,5 @@ jobs:
       - name: Build and Deploy
         working-directory: ./documentation
         run: |
-          mike deploy develop
+          mike deploy develop --update-alias --push
 
