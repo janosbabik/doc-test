@@ -1,9 +1,8 @@
 name: Deploy LATEST DOCS
 on:
-  workflow_run:
-    workflows: ["Bump version"]
-    types:
-      - completed
+  push:
+    tags:
+      - 'v*.*.*'
 permissions:
   contents: write
 jobs:
